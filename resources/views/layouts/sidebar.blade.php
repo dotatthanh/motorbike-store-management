@@ -9,13 +9,6 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title" key="t-menu">Quản lý</li>
                 <li>
-                    <a href="{{ route('users.index') }}" class="waves-effect">
-                        <i class="bx bx-user-circle"></i>
-                        <span key="t-user">Nhân viên</span>
-                    </a>
-                </li>
-
-                <li>
                     <a href="{{ route('companies.index') }}" class="waves-effect">
                         <i class="bx bx-building"></i>
                         <span key="t-user">Công ty</span>
@@ -23,6 +16,13 @@
                 </li>
 
                 <li>
+                    <a href="{{ route('shops.index') }}" class="waves-effect">
+                        <i class="bx bx-shopping-bag"></i>
+                        <span key="t-user">Cửa hàng</span>
+                    </a>
+                </li>
+
+                {{-- <li>
                     <a href="{{ route('categories.index') }}" class="waves-effect">
                         <i class="bx bx-list-ul"></i>
                         <span key="t-user">Danh mục sản phẩm</span>
@@ -62,7 +62,7 @@
                         <i class="bx bxs-discount"></i>
                         <span key="t-user">Mã giảm giá</span>
                     </a>
-                </li>
+                </li> --}}
 
                 {{-- <li class="menu-title" key="t-menu">Thống kê</li>
                 <li>

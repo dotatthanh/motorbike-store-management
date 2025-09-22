@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateCompanyRequest extends FormRequest
+class UpdateShopRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +23,14 @@ class UpdateCompanyRequest extends FormRequest
     public function rules()
     {
         return [
+            'company_id' => 'required',
             'name' => 'required|max:255',
             'email' => [
-                'required', 'string', 'email', 'max:255',
-                Rule::unique('companies')->ignore($this->company),
+                'required',
+                'string',
+                'email',
+                'max:255',
+                Rule::unique('shops')->ignore($this->shop),
             ],
             'phone_number' => 'required|size:10',
             'address' => 'required|max:255',
@@ -38,8 +42,9 @@ class UpdateCompanyRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Tên công ty là trường bắt buộc.',
-            'name.max' => 'Tên công ty không được dài quá :max ký tự.',
+            'company_id.required' => 'Tên công ty là trường bắt buộc.',
+            'name.required' => 'Tên cửa hàng là trường bắt buộc.',
+            'name.max' => 'Tên cửa hàng không được dài quá :max ký tự.',
             'phone_number.required' => 'Số điện thoại là trường bắt buộc.',
             'phone_number.size' => 'Số điện thoại phải là :size số.',
             'address.required' => 'Địa chỉ là trường bắt buộc.',

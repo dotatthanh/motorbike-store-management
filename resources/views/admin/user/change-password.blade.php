@@ -46,10 +46,10 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="text-center mb-3">
-                            <button type="submit" class="btn btn-primary mr-1 waves-effect waves-light">Lưu lại</button>
-                            <a href="{{ route('users.index') }}" class="btn btn-secondary waves-effect">Quay lại</a>
+                        <div class="row justify-content-center mb-3">
+                            <div class="col-sm-4 offset-sm-3">
+                                <button type="submit" class="btn btn-primary mr-1 waves-effect waves-light">Lưu lại</button>
+                            </div>
                         </div>
 
                     </form>

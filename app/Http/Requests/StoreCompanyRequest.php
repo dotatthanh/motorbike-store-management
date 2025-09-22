@@ -26,6 +26,8 @@ class StoreCompanyRequest extends FormRequest
             'address' => 'required|max:255',
             'phone_number' => 'required|size:10',
             'email' => 'required|string|email|unique:companies|max:255',
+            'latitude' => 'required|numeric|between:-90,90',
+            'longitude' => 'required|numeric|between:-180,180',
         ];
     }
 
@@ -44,6 +46,12 @@ class StoreCompanyRequest extends FormRequest
             'email.unique' => 'Email đã tồn tại.',
             'email.string' => 'Email phải là một chuỗi.',
             'email.max' => 'Email không được dài quá :max ký tự.',
+            'latitude.required' => 'Vĩ độ không được để trống.',
+            'latitude.numeric' => 'Vĩ độ phải là một số.',
+            'latitude.between' => 'Vĩ độ phải nằm trong khoảng từ -90 đến 90.',
+            'longitude.required' => 'Kinh độ không được để trống.',
+            'longitude.numeric' => 'Kinh độ phải là một số.',
+            'longitude.between' => 'Kinh độ phải nằm trong khoảng từ -180 đến 180.',
         ];
     }
 }

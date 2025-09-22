@@ -20,10 +20,10 @@ class UserSeeder extends Seeder
             'code' => 'ADMIN',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('123123123'),
-            'name' => 'Nguyễn Thành Công',
-            'birthday' => '2003-03-27',
-            'phone_number' => '0902946403',
-            'address' => 'Long An',
+            'name' => 'Đào Ngọc Bảo Trân',
+            'birthday' => '2004-01-27',
+            'phone_number' => '0949077041',
+            'address' => '139a Điện Biên Phủ',
             'gender' => 'Nam',
         ]);
     }

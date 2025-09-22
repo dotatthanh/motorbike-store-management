@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class UpdateCompanyRequest extends FormRequest
+class StoreShopRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -20,16 +19,14 @@ class UpdateCompanyRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'name' => 'required|max:255',
-            'email' => [
-                'required', 'string', 'email', 'max:255',
-                Rule::unique('companies')->ignore($this->company),
-            ],
-            'phone_number' => 'required|size:10',
+            'company_id' => 'required',
+            'name' => 'required|string|max:255',
             'address' => 'required|max:255',
+            'phone_number' => 'required|size:10',
+            'email' => 'required|string|email|unique:shops|max:255',
             'latitude' => 'required|numeric|between:-90,90',
             'longitude' => 'required|numeric|between:-180,180',
         ];
@@ -38,8 +35,10 @@ class UpdateCompanyRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Tên công ty là trường bắt buộc.',
-            'name.max' => 'Tên công ty không được dài quá :max ký tự.',
+            'company_id.required' => 'Tên công ty là trường bắt buộc.',
+            'name.string' => 'Tên cửa hàng không được chứa các ký tự đặc biệt.',
+            'name.max' => 'Tên cửa hàng không được phép quá 255 ký tự.',
+            'name.required' => 'Tên cửa hàng là trường bắt buộc.',
             'phone_number.required' => 'Số điện thoại là trường bắt buộc.',
             'phone_number.size' => 'Số điện thoại phải là :size số.',
             'address.required' => 'Địa chỉ là trường bắt buộc.',

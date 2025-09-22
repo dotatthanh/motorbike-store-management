@@ -1,16 +1,16 @@
 @extends('layouts.master')
 
 @section('title')
-    Danh sách công ty
+    Danh sách cửa hàng
 @endsection
 
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1')
-            Công ty
+            Cửa hàng
         @endslot
         @slot('title')
-            Danh sách công ty
+            Danh sách cửa hàng
         @endslot
     @endcomponent
     <div class="row">
@@ -18,18 +18,18 @@
             <div class="card">
                 <div class="card-body border-bottom">
                     <div class="d-flex align-items-center justify-content-between">
-                        <h4 class="card-title">Danh sách công ty</h4>
+                        <h4 class="card-title">Danh sách cửa hàng</h4>
                         <div class="flex-shrink-0">
-                            <a href="{{ route('companies.create') }}" class="btn btn-primary">Thêm công ty</a>
-                            <a href="{{ route('companies.index') }}" class="btn btn-light"><i class="mdi mdi-refresh"></i></a>
+                            <a href="{{ route('shops.create') }}" class="btn btn-primary">Thêm cửa hàng</a>
+                            <a href="{{ route('shops.index') }}" class="btn btn-light"><i class="mdi mdi-refresh"></i></a>
                         </div>
                     </div>
                 </div>
 
-                <form method="GET" action="{{ route('companies.index') }}" class="card-body border-bottom">
+                <form method="GET" action="{{ route('shops.index') }}" class="card-body border-bottom">
                     <div class="row g-3">
                         <div class="col-xxl-4 col-lg-6">
-                            <input type="search" name="search" class="form-control" id="search" placeholder="Nhập tên công ty" value="{{ request()->search }}">
+                            <input type="search" name="search" class="form-control" id="search" placeholder="Nhập tên cửa hàng" value="{{ request()->search }}">
                         </div>
                         <div class="col-xxl-2 col-lg-4">
                             <button type="submit" class="btn btn-primary w-100"><i class="mdi mdi-filter-outline align-middle"></i> Tìm kiếm</button>
@@ -42,6 +42,7 @@
                         <thead class="thead-light">
                             <tr>
                                 <th style="width: 70px;" class="text-center">STT</th>
+                                <th>Tên cửa hàng</th>
                                 <th>Tên công ty</th>
                                 <th>Email</th>
                                 <th>Số điện thoại</th>
@@ -55,19 +56,20 @@
                                 <tr>
                                     <td class="text-center">{{ $stt++ }}</td>
                                     <td>{{ $item->name }}</td>
+                                    <td>{{ $item->company->name }}</td>
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->phone_number }}</td>
                                     <td>{{ $item->address }}</td>
                                     <td class="text-center">
                                         <ul class="list-unstyled hstack gap-1 mb-0">
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Chỉnh sửa công ty">
-                                                <a href="{{ route('companies.edit', $item->id) }}" class="btn btn-sm bg-info text-info bg-soft">
+                                            <li data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Chỉnh sửa cửa hàng">
+                                                <a href="{{ route('shops.edit', $item->id) }}" class="btn btn-sm bg-info text-info bg-soft">
                                                     <i class="mdi mdi-pencil-outline"></i>
                                                 </a>
                                             </li>
 
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xóa công ty">
-                                                <form id="delete-form-{{ $item->id }}" method="post" action="{{ route('companies.destroy', $item->id) }}">
+                                            <li data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xóa cửa hàng">
+                                                <form id="delete-form-{{ $item->id }}" method="post" action="{{ route('shops.destroy', $item->id) }}">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="button" data-id="{{ $item->id }}" data-bs-toggle="modal" class="btn btn-sm bg-danger text-danger bg-soft btn-delete-user">
@@ -83,7 +85,7 @@
                     </table>
 
                     @if ($data->isEmpty())
-                        <div class="text-center">Không tìm thấy công ty</div>
+                        <div class="text-center">Không tìm thấy cửa hàng</div>
                     @endif
                 </div>
 
@@ -92,7 +94,7 @@
         </div>
     </div>
 
-    @include('components.confirm-modal', ['title' => 'Xác nhận xóa công ty'])
+    @include('components.confirm-modal', ['title' => 'Xác nhận xóa cửa hàng'])
 @endsection
 
 @section('script')

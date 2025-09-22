@@ -6,8 +6,8 @@
 <div class="row">
     <div class="col-sm-6">
         <div class="form-group mb-3">
-            <label for="name">Tên công ty <span class="text-danger">*</span></label>
-            <input id="name" name="name" type="text" class="form-control" placeholder="Tên công ty" value="{{ old('name', $data_edit->name ?? '') }}">
+            <label for="name">Tên cửa hàng <span class="text-danger">*</span></label>
+            <input id="name" name="name" type="text" class="form-control" placeholder="Tên cửa hàng" value="{{ old('name', $data_edit->name ?? '') }}">
             {!! $errors->first('name', '<span class="error d-block mt-2">:message</span>') !!}
         </div>
 
@@ -16,27 +16,44 @@
             <input id="phone_number" name="phone_number" type="number" class="form-control" placeholder="Số điện thoại" value="{{ old('phone_number', $data_edit->phone_number ?? '') }}">
             {!! $errors->first('phone_number', '<span class="error d-block mt-2">:message</span>') !!}
         </div>
+    </div>
 
+    <div class="col-sm-6">
+        <div class="form-group mb-3">
+            <label for="company_id">Công ty <span class="text-danger">*</span></label>
+            <select class="form-control select2" name="company_id">
+                <option value="">Chọn công ty</option>
+                @foreach ($companies as $company)
+                    <option value="{{ $company->id }}"
+                        {{ old('company_id', $data_edit->company_id ?? '') == $company->id ? 'selected' : '' }}>
+                        {{ $company->name }}</option>
+                @endforeach
+            </select>
+            {!! $errors->first('company_id', '<span class="error d-block mt-2">:message</span>') !!}
+        </div>
+        <div class="form-group mb-3">
+            <label for="email">Email <span class="text-danger">*</span></label>
+            <input id="email" name="email" type="text" class="form-control" placeholder="Email" value="{{ old('email', $data_edit->email ?? '') }}">
+            {!! $errors->first('email', '<span class="error d-block mt-2">:message</span>') !!}
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+        <div class="form-group mb-3">
+            <label for="address">Địa chỉ <span class="text-danger">*</span></label>
+            <input id="address" name="address" type="text" class="form-control" placeholder="Địa chỉ" value="{{ old('address', $data_edit->address ?? '') }}">
+            {!! $errors->first('address', '<span class="error d-block mt-2">:message</span>') !!}
+        </div>
+    </div>
+
+    <div class="col-sm-6">
         <div class="form-group mb-3">
             <label for="latitude">Vĩ độ <span class="text-danger">*</span></label>
             <input id="latitude" name="latitude" type="number" step="any" class="form-control" placeholder="Vĩ độ" value="{{ old('latitude', $data_edit->latitude ?? '') }}">
             {!! $errors->first('latitude', '<span class="error d-block mt-2">:message</span>') !!}
         </div>
     </div>
-
     <div class="col-sm-6">
-        <div class="form-group mb-3">
-            <label for="email">Email <span class="text-danger">*</span></label>
-            <input id="email" name="email" type="text" class="form-control" placeholder="Email" value="{{ old('email', $data_edit->email ?? '') }}">
-            {!! $errors->first('email', '<span class="error d-block mt-2">:message</span>') !!}
-        </div>
-
-        <div class="form-group mb-3">
-            <label for="address">Địa chỉ <span class="text-danger">*</span></label>
-            <input id="address" name="address" type="text" class="form-control" placeholder="Địa chỉ" value="{{ old('address', $data_edit->address ?? '') }}">
-            {!! $errors->first('address', '<span class="error d-block mt-2">:message</span>') !!}
-        </div>
-
         <div class="form-group mb-3">
             <label for="longitude">Kinh độ <span class="text-danger">*</span></label>
             <input id="longitude" name="longitude" type="number" step="any" class="form-control" placeholder="Kinh độ" value="{{ old('longitude', $data_edit->longitude ?? '') }}">
@@ -46,4 +63,4 @@
 </div>
 
 <button type="submit" class="btn btn-primary mr-1 waves-effect waves-light">Lưu lại</button>
-<a href="{{ route('companies.index') }}" class="btn btn-secondary waves-effect">Quay lại</a>
+<a href="{{ route('shops.index') }}" class="btn btn-secondary waves-effect">Quay lại</a>
