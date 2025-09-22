@@ -1,16 +1,16 @@
 @extends('layouts.master')
 
 @section('title')
-    Cập nhật mã giảm giá
+    Thêm cửa hàng
 @endsection
 
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1')
-            Mã giảm giá
+            Cửa hàng
         @endslot
         @slot('title')
-            Cập nhật mã giảm giá
+            Thêm cửa hàng
         @endslot
     @endcomponent
 
@@ -18,11 +18,11 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-4">Cập nhật mã giảm giá</h4>
+                    <h4 class="card-title mb-4">Thêm cửa hàng</h4>
 
-                    <form method="POST" action="{{ route('discount-codes.update', $data_edit->id) }}" enctype="multipart/form-data">
-                        @method('PUT')
-                        @include('admin.discount-code._form', ['routeType' => 'edit'])
+                    <form method="POST" action="{{ route('shops.store') }}" enctype="multipart/form-data">
+
+                        @include('admin.shop._form', ['routeType' => 'create'])
 
                     </form>
                 </div>

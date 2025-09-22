@@ -1,16 +1,16 @@
 @extends('layouts.master')
 
 @section('title')
-    Thêm nhân viên
+    Cập nhật cửa hàng
 @endsection
 
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1')
-            Nhân viên
+            Cửa hàng
         @endslot
         @slot('title')
-            Thêm nhân viên
+            Cập nhật cửa hàng
         @endslot
     @endcomponent
 
@@ -18,11 +18,11 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-4">Thêm nhân viên</h4>
+                    <h4 class="card-title mb-4">Cập nhật cửa hàng</h4>
 
-                    <form method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data">
-
-                        @include('admin.user._form', ['routeType' => 'create'])
+                    <form method="POST" action="{{ route('shops.update', $data_edit->id) }}" enctype="multipart/form-data">
+                        @method('PUT')
+                        @include('admin.shop._form', ['routeType' => 'edit'])
 
                     </form>
                 </div>

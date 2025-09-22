@@ -5,14 +5,12 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateUserRequest extends FormRequest
+class UpdateShopRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
-     * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -20,33 +18,33 @@ class UpdateUserRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules()
     {
         return [
+            'company_id' => 'required',
             'name' => 'required|max:255',
             'email' => [
-                'required', 'string', 'email', 'max:255',
-                Rule::unique('users')->ignore($this->user),
+                'required',
+                'string',
+                'email',
+                'max:255',
+                Rule::unique('shops')->ignore($this->shop),
             ],
-            'gender' => 'required',
-            'birthday' => 'required|date',
             'phone_number' => 'required|size:10',
             'address' => 'required|max:255',
-            'avatar' => 'nullable|image',
-            'roles' => 'required',
+            'latitude' => 'required|numeric|between:-90,90',
+            'longitude' => 'required|numeric|between:-180,180',
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'Họ và tên là trường bắt buộc.',
-            'name.max' => 'Họ và tên không được dài quá :max ký tự.',
-            'gender.required' => 'Giới tính là trường bắt buộc.',
-            'birthday.required' => 'Ngày sinh là trường bắt buộc.',
-            'birthday.date' => 'Ngày sinh không đúng định dạng.',
+            'company_id.required' => 'Tên công ty là trường bắt buộc.',
+            'name.required' => 'Tên cửa hàng là trường bắt buộc.',
+            'name.max' => 'Tên cửa hàng không được dài quá :max ký tự.',
             'phone_number.required' => 'Số điện thoại là trường bắt buộc.',
             'phone_number.size' => 'Số điện thoại phải là :size số.',
             'address.required' => 'Địa chỉ là trường bắt buộc.',
@@ -56,8 +54,12 @@ class UpdateUserRequest extends FormRequest
             'email.unique' => 'Email đã tồn tại.',
             'email.string' => 'Email phải là một chuỗi.',
             'email.max' => 'Email không được dài quá :max ký tự.',
-            'avatar.image' => 'Ảnh đại diện phải là tệp tin dạng ảnh!',
-            'roles.required' => 'Vai trò là trường bắt buộc.',
+            'latitude.required' => 'Vĩ độ không được để trống.',
+            'latitude.numeric' => 'Vĩ độ phải là một số.',
+            'latitude.between' => 'Vĩ độ phải nằm trong khoảng từ -90 đến 90.',
+            'longitude.required' => 'Kinh độ không được để trống.',
+            'longitude.numeric' => 'Kinh độ phải là một số.',
+            'longitude.between' => 'Kinh độ phải nằm trong khoảng từ -180 đến 180.',
         ];
     }
 }

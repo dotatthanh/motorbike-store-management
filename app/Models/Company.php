@@ -15,5 +15,12 @@ class Company extends Model
         'email',
         'phone_number',
         'address',
+        'latitude',
+        'longitude',
     ];
+
+    public function shops()
+    {
+        return $this->hasMany(Shop::class);
+    }
 }

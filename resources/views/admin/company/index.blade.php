@@ -42,7 +42,7 @@
                         <thead class="thead-light">
                             <tr>
                                 <th style="width: 70px;" class="text-center">STT</th>
-                                <th>Họ và tên</th>
+                                <th>Tên công ty</th>
                                 <th>Email</th>
                                 <th>Số điện thoại</th>
                                 <th>Địa chỉ</th>
