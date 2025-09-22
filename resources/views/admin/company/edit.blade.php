@@ -1,16 +1,16 @@
 @extends('layouts.master')
 
 @section('title')
-    Thêm nhà cung cấp
+    Cập nhật công ty
 @endsection
 
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1')
-            Nhà cung cấp
+            Công ty
         @endslot
         @slot('title')
-            Thêm nhà cung cấp
+            Cập nhật công ty
         @endslot
     @endcomponent
 
@@ -18,11 +18,11 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-4">Thêm nhà cung cấp</h4>
+                    <h4 class="card-title mb-4">Cập nhật công ty</h4>
 
-                    <form method="POST" action="{{ route('suppliers.store') }}" enctype="multipart/form-data">
-
-                        @include('admin.supplier._form', ['routeType' => 'create'])
+                    <form method="POST" action="{{ route('companies.update', $data_edit->id) }}" enctype="multipart/form-data">
+                        @method('PUT')
+                        @include('admin.company._form', ['routeType' => 'edit'])
 
                     </form>
                 </div>

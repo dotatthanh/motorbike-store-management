@@ -16,9 +16,9 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('suppliers.index') }}" class="waves-effect">
+                    <a href="{{ route('companies.index') }}" class="waves-effect">
                         <i class="bx bx-building"></i>
-                        <span key="t-user">Nhà cung cấp</span>
+                        <span key="t-user">Công ty</span>
                     </a>
                 </li>
 
@@ -64,15 +64,15 @@
                     </a>
                 </li>
 
-                <li class="menu-title" key="t-menu">Thống kê</li>
+                {{-- <li class="menu-title" key="t-menu">Thống kê</li>
                 <li>
                     <a href="{{ route('reports.index') }}" class="waves-effect">
                         <i class="bx bx-dollar-circle"></i>
                         <span key="t-user">Doanh thu</span>
                     </a>
-                </li>
+                </li> --}}
 
-                <li class="menu-title" key="t-menu">Hệ thống</li>
+                {{-- <li class="menu-title" key="t-menu">Hệ thống</li>
                 @can(['Xem danh sách vai trò', 'Xem danh sách quyền'])
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -88,7 +88,7 @@
                         @endcan
                     </ul>
                 </li>
-                @endcan
+                @endcan --}}
 
                 {{-- Template --}}
                 {{-- <li class="menu-title" key="t-menu">@lang('translation.Menu')</li>

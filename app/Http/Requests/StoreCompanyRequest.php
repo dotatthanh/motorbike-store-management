@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreSupplierRequest extends FormRequest
+class StoreCompanyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,16 +25,16 @@ class StoreSupplierRequest extends FormRequest
             'name' => 'required|string|max:255',
             'address' => 'required|max:255',
             'phone_number' => 'required|size:10',
-            'email' => 'required|string|email|unique:suppliers|max:255',
+            'email' => 'required|string|email|unique:companies|max:255',
         ];
     }
 
     public function messages()
     {
         return [
-            'name.string' => 'Tên nhà cung cấp không được chứa các ký tự đặc biệt.',
-            'name.max' => 'Tên nhà cung cấp không được phép quá 255 ký tự.',
-            'name.required' => 'Tên nhà cung cấp là trường bắt buộc.',
+            'name.string' => 'Tên công ty không được chứa các ký tự đặc biệt.',
+            'name.max' => 'Tên công ty không được phép quá 255 ký tự.',
+            'name.required' => 'Tên công ty là trường bắt buộc.',
             'phone_number.required' => 'Số điện thoại là trường bắt buộc.',
             'phone_number.size' => 'Số điện thoại phải là :size số.',
             'address.required' => 'Địa chỉ là trường bắt buộc.',

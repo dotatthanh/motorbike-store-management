@@ -34,7 +34,7 @@ class StoreImportOrderRequest extends FormRequest
     public function messages()
     {
         return [
-            'supplier_id.required' => 'Nhà cung cấp là trường bắt buộc.',
+            'supplier_id.required' => 'Công ty là trường bắt buộc.',
             'import_orders.required' => 'Chi tiết nhập hàng là trường bắt buộc.',
             'import_orders.array' => 'Chi tiết nhập hàng phải là mảng.',
             'import_orders.*.product_id.required' => 'Sản phẩm là trường bắt buộc.',

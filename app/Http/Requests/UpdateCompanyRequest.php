@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateSupplierRequest extends FormRequest
+class UpdateCompanyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,7 @@ class UpdateSupplierRequest extends FormRequest
             'name' => 'required|max:255',
             'email' => [
                 'required', 'string', 'email', 'max:255',
-                Rule::unique('suppliers')->ignore($this->supplier),
+                Rule::unique('companies')->ignore($this->company),
             ],
             'phone_number' => 'required|size:10',
             'address' => 'required|max:255',

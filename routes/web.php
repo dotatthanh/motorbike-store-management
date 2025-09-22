@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\RoleController;
-use App\Http\Controllers\Admin\SupplierController;
+use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WarehouseController;
 // use App\Http\Controllers\ProfileController;
@@ -29,7 +29,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
     Route::resource('categories', CategoryController::class);
 
-    Route::resource('suppliers', SupplierController::class);
+    Route::resource('companies', CompanyController::class);
 
     Route::resource('discount-codes', DiscountCodeController::class);
 

@@ -51,7 +51,7 @@ class UpdateProductRequest extends FormRequest
             'sale.numeric' => 'Khuyến mãi phải là kiểu số.',
             'sale.between' => 'Khuyến mãi không nằm trong khoảng :min - :max.',
             'categories.required' => 'Danh mục là trường bắt buộc.',
-            'supplier_id.required' => 'Nhà cung cấp là trường bắt buộc.',
+            'supplier_id.required' => 'Công ty là trường bắt buộc.',
             'product_images.required' => 'Ảnh chi tiết sản phẩm là trường bắt buộc.',
             'description.required' => 'Mô tả là trường bắt buộc.',
             'variants.required' => 'Biến thể là trường bắt buộc.',
