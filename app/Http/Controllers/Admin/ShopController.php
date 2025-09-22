@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreShopRequest;
 use App\Http\Requests\UpdateShopRequest;
-use App\Models\Shop;
 use App\Models\Company;
+use App\Models\Shop;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +20,7 @@ class ShopController extends Controller
     public function index(Request $request)
     {
         $data = Shop::when($request->search, function ($query, $search) {
-            return $query->where('name', 'like', '%' . $search . '%');
+            return $query->where('name', 'like', '%'.$search.'%');
         })->paginate(10)->appends(['search' => $request->search]);
 
         $data = [
@@ -37,7 +37,7 @@ class ShopController extends Controller
     {
         $companies = Company::all();
         $data = [
-            'companies' => $companies
+            'companies' => $companies,
         ];
 
         return view('admin.shop.create', $data);

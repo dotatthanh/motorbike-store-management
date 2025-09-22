@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\ShopController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->prefix('admin')->group(function () {
@@ -18,4 +18,4 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/profile', [UserController::class, 'profile'])->name('users.profile');
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
