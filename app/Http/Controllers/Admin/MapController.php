@@ -3,127 +3,42 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreShopRequest;
-use App\Http\Requests\UpdateShopRequest;
 use App\Models\Company;
 use App\Models\Shop;
-use Exception;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
 class MapController extends Controller
 {
-//     /**
-//      * Display a listing of the resource.
-//      */
-//     public function index(Request $request)
-//     {
-//         $data = Shop::when($request->search, function ($query, $search) {
-//             return $query->where('name', 'like', '%' . $search . '%');
-//         })->paginate(10)->appends(['search' => $request->search]);
-
-//         $data = [
-//             'data' => $data,
-//         ];
-
-//         return view('admin.shop.index', $data);
-//     }
-
-//     /**
-//      * Show the form for creating a new resource.
-//      */
     public function map()
     {
-        $companies = Company::all();
+        $shops = Shop::with('company')->get()->map(function ($shop) {
+            return [
+                'name' => $shop->name,
+                'lat' => $shop->latitude,
+                'lng' => $shop->longitude,
+                'address' => $shop->address,
+                'company_name' => $shop->company->name,
+                'email' => $shop->email,
+                'phone_number' => $shop->phone_number,
+                'icon' => 'shop.png',
+            ];
+        });
+        $companies = Company::all()->map(function ($company) {
+            return [
+                'name' => $company->name,
+                'lat' => $company->latitude,
+                'lng' => $company->longitude,
+                'address' => $company->address,
+                'email' => $company->email,
+                'phone_number' => $company->phone_number,
+                'icon' => 'company.png',
+            ];
+        });
+
+        $data = $companies->concat($shops);
         $data = [
-            'companies' => $companies,
+            'data' => $data,
         ];
 
         return view('admin.map.index', $data);
     }
-
-    // /**
-    //  * Store a newly created resource in storage.
-    //  */
-    // public function store(StoreShopRequest $request)
-    // {
-    //     DB::beginTransaction();
-    //     try {
-    //         Shop::create($request->all());
-
-    //         DB::commit();
-
-    //         return redirect()->route('shops.index')->with('alert-success', 'Thêm công ty thành công!');
-    //     } catch (Exception $e) {
-    //         DB::rollBack();
-    //         Log::error($e);
-
-    //         return redirect()->back()->with('alert-error', 'Thêm công ty thất bại!');
-    //     }
-    // }
-
-    // /**
-    //  * Display the specified resource.
-    //  */
-    // public function show(Shop $shop)
-    // {
-    //     //
-    // }
-
-    // /**
-    //  * Show the form for editing the specified resource.
-    //  */
-    // public function edit(Shop $shop)
-    // {
-    //     $companies = Company::all();
-
-    //     $data = [
-    //         'companies' => $companies,
-    //         'data_edit' => $shop,
-    //     ];
-
-    //     return view('admin.shop.edit', $data);
-    // }
-
-    // /**
-    //  * Update the specified resource in storage.
-    //  */
-    // public function update(UpdateShopRequest $request, Shop $shop)
-    // {
-    //     DB::beginTransaction();
-    //     try {
-    //         $shop->update($request->all());
-
-    //         DB::commit();
-
-    //         return redirect()->route('shops.index')->with('alert-success', 'Cập nhật công ty thành công!');
-    //     } catch (Exception $e) {
-    //         DB::rollBack();
-    //         Log::error($e);
-
-    //         return redirect()->back()->with('alert-error', 'Cập nhật công ty thất bại!');
-    //     }
-    // }
-
-    // /**
-    //  * Remove the specified resource from storage.
-    //  */
-    // public function destroy(Shop $shop)
-    // {
-    //     try {
-    //         DB::beginTransaction();
-
-    //         $shop->destroy($shop->id);
-
-    //         DB::commit();
-
-    //         return redirect()->route('shops.index')->with('alert-success', 'Xóa công ty thành công!');
-    //     } catch (Exception $e) {
-    //         DB::rollBack();
-    //         Log::error($e);
-
-    //         return redirect()->back()->with('alert-error', 'Xóa công ty thất bại!');
-    //     }
-    // }
 }

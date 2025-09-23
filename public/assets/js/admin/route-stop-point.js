@@ -12,22 +12,30 @@ function initMap() {
         controls: true
     });
 
-    const data = [
-        { name: "Cửa hàng A", lat: 10.7769, lng: 106.7009, address: "123 Lê Lợi", company: { name: 'Công ty A' }, email: 'congtyA@gmail.com', phone_number: '0123123123', icon: 'shop.png'},
-        { name: "Công ty B", lat: 10.7801, lng: 106.6999, address: "456 Trần Hưng Đạo", email: 'congtyB@gmail.com', phone_number: '0123123144', icon: 'company.png'},
-    ];
+    // const data = [
+    //     { name: "Cửa hàng A", lat: 10.7769, lng: 106.7009, address: "123 Lê Lợi", company: { name: 'Công ty A' }, email: 'congtyA@gmail.com', phone_number: '0123123123', icon: 'shop.png'},
+    //     { name: "Công ty B", lat: 10.7801, lng: 106.6999, address: "456 Trần Hưng Đạo", email: 'congtyB@gmail.com', phone_number: '0123123144', icon: 'company.png'},
+    // ];
 
     data.forEach(store => {
         const el = document.createElement('div');
         el.className = 'my-marker';
-        el.innerHTML = `<img src="https://motorbike-store-management.test/assets/images/${store.icon}" style="width:25px;height:25px">`;
+        el.innerHTML = `
+            <div style="display:flex; align-items:center; gap:4px; white-space:nowrap;">
+                <img src="https://motorbike-store-management.test/assets/images/${store.icon}" 
+                    style="width:25px;height:25px">
+                <span style="background:#fff; padding:2px 4px; border-radius:4px; font-size:12px; box-shadow:0 1px 2px rgba(0,0,0,0.3); position: absolute; left: 27px; top: 1.5px;">
+                    ${store.name}
+                </span>
+            </div>
+        `;
 
         const marker = new map4d.Marker({
             position: { lat: store.lat, lng: store.lng },
             iconView: el.outerHTML,
         });
         marker.name = store.name;
-        marker.companyName = store.company?.name;
+        marker.companyName = store.company_name;
         marker.email = store.email;
         marker.address = store.address;
         marker.phoneNumber = store.phone_number;

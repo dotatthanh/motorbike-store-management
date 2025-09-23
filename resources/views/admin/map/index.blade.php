@@ -44,6 +44,7 @@
     <!-- map4d -->
     <script>
         var map4dKey = "{{ config('app.map4d_key') }}";
+        var data = @json($data);
     </script>
     <script src="{{ asset('/assets/js/admin/route-stop-point.js') }}"></script>
     <script src="https://api.map4d.vn/sdk/map/js?version=2.6&key={{ config('app.map4d_key') }}&callback=initMap"></script>
