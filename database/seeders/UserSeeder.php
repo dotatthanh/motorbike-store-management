@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
             'birthday' => '2004-01-27',
             'phone_number' => '0949077041',
             'address' => '139a Điện Biên Phủ',
-            'gender' => 'Nam',
+            'gender' => 'Nữ',
         ]);
     }
 }
