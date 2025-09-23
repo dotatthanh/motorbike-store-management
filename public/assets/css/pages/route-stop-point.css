@@ -67,9 +67,9 @@
 }
 
 .place-info .place-info-address {
-    white-space: nowrap;
+    /* white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; */
     max-width: 268px;
 }
 
