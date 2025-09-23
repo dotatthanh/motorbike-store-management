@@ -5,6 +5,10 @@ use App\Http\Controllers\Admin\ShopController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', function () {
+    return redirect()->route('login');
+});
+
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/', function () {
         return redirect()->route('companies.index');
