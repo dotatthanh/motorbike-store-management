@@ -11,14 +11,21 @@
                 <li>
                     <a href="{{ route('companies.index') }}" class="waves-effect">
                         <i class="bx bx-building"></i>
-                        <span key="t-user">Công ty</span>
+                        <span key="t-company">Công ty</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="{{ route('shops.index') }}" class="waves-effect">
                         <i class="bx bx-shopping-bag"></i>
-                        <span key="t-user">Cửa hàng</span>
+                        <span key="t-shop">Cửa hàng</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('map') }}" class="waves-effect">
+                        <i class="bx bx-map"></i>
+                        <span key="t-map">Bản đồ</span>
                     </a>
                 </li>
 
