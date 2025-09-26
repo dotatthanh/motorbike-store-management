@@ -7,10 +7,10 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1')
-            Cửa hàng
+            Bản đồ
         @endslot
         @slot('title')
-            Danh sách cửa hàng
+            Bản đồ
         @endslot
     @endcomponent
     <div class="row">
@@ -18,7 +18,7 @@
             <div class="card">
                 <div class="card-body border-bottom">
                     <div class="d-flex align-items-center justify-content-between">
-                        <h4 class="card-title">Danh sách cửa hàng</h4>
+                        <h4 class="card-title">Bản đồ</h4>
                     </div>
                 </div>
 
