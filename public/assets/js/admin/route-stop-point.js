@@ -22,7 +22,7 @@ function initMap() {
         el.className = 'my-marker';
         el.innerHTML = `
             <div style="display:flex; align-items:center; gap:4px; white-space:nowrap;">
-                <img src="https://motorbike-store-management.test/assets/images/${store.icon}" 
+                <img src="/assets/images/${store.icon}" 
                     style="width:25px;height:25px">
                 <span style="background:#fff; padding:2px 4px; border-radius:4px; font-size:12px; box-shadow:0 1px 2px rgba(0,0,0,0.3); position: absolute; left: 27px; top: 1.5px;">
                     ${store.name}
