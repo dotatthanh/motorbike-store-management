@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\ShopController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\MapController;
+use App\Http\Controllers\Admin\StatisticController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,6 +24,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/profile', [UserController::class, 'profile'])->name('users.profile');
 
     Route::get('/map', [MapController::class, 'map'])->name('map');
+    Route::get('/statistic/{shop}', [StatisticController::class, 'index'])->name('statistic');
 });
 
 require __DIR__.'/auth.php';

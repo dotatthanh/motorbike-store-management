@@ -24,4 +24,19 @@ class Shop extends Model
     {
         return $this->belongsTo(Company::class);
     }
+
+    public function inventories()
+    {
+        return $this->hasMany(ShopInventory::class);
+    }
+
+    public function purchaseOrders()
+    {
+        return $this->hasMany(PurchaseOrders::class);
+    }
+
+    public function salesOrders()
+    {
+        return $this->hasMany(SalesOrders::class);
+    }
 }
