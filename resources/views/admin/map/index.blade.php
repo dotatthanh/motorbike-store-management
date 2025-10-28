@@ -23,6 +23,15 @@
                 </div>
 
                 <div class="container-map">
+                     <div class="box-search">
+                        <div class="box-search-content">
+                            <input type="text" placeholder="Tìm kiếm" id="input-search-map">
+                            <button type="button">
+                                <img src="{{ asset('assets/images/icon-search.svg') }}" alt="">
+                            </button>
+                        </div>
+                        <div class="list-search"></div>
+                    </div>
                     <div class="place-info">
                         <button type="button" class="btn-close-place-info">x</button>
                         <div class="fw-bold place-info-name"></div>
@@ -30,6 +39,7 @@
                         <div class="d-block place-info-email"></div>
                         <div class="d-block place-info-address"></div>
                         <div class="d-block place-info-phone-number"></div>
+                        <div class="d-block place-statistic"></div>
                     </div>
                     <div id="map" class="w-100" style="height:500px;"></div>
                 </div>

@@ -10,7 +10,7 @@
             Thống kê
         @endslot
         @slot('title')
-            Thống kê cửa hàng {{ $data->first()->shop->name }}
+            Thống kê {{ $data->first()->shop->name }}
         @endslot
     @endcomponent
     <div class="row">
